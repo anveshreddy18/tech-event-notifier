@@ -22,3 +22,10 @@ EMBIBE THE BIAS FOR ACTION AND THE BIAS FOR DECISION MAKING. F**K AROUND AND FIN
 FIRST TRY TO FUCK IT ALL UP. THEN UNDERSTAND WHETHER SOLID PRINCIPLES ARE WORTH IT, IF YES, THEN WE NOW KNOW WHY
 
 Also IMPORTANT: Do proper error handling and pass context properly
+
+<!-- This is in the last and final stages of deployment and testing. -->
+DEPLOY, DOCKER, KUBERNETES
+
+<!-- Once a basic version is out and running, then we focus on improving performance & testing it -->
+
+<!-- Also just quickly build a simple front-end to enhance user interaction and information display -->

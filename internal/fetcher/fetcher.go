@@ -1,23 +1,18 @@
 package fetcher
 
-import "fmt"
-
 // So I want to write an interface for the fetcher now.
 
 type fetcher interface {
 	Fetch() error
 }
 
-func NewFetcher(aggregator string, city string) fetcher {
+func NewFetcher(aggregator string, city string, apiKey string) fetcher {
 	switch aggregator {
 	case "meetup":
-		fmt.Println("Switch case meetup")
-		return NewMeetup(city)
+		return NewMeetup(city, apiKey)
 	case "eventbrite":
-		fmt.Println("Switch case eventbrite")
-		return NewEventbrite(city)
+		return NewEventbrite(city, apiKey)
 	default:
-		fmt.Println("Switch case default")
 		return nil
 	}
 }

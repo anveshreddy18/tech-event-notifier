@@ -12,18 +12,18 @@ type MeetupConfig struct {
 	MeetupAPIKey string
 }
 
-func NewMeetup(city string) *MeetupConfig {
+func NewMeetup(city string, apiKey string) *MeetupConfig {
 	return &MeetupConfig{
 		City:         city,
 		Date:         time.Now().Format("2006-01-02"),
 		Distance:     10,
-		MeetupAPIKey: "",
+		MeetupAPIKey: apiKey,
 	}
 }
 
 func (c *MeetupConfig) Fetch() error {
 	fmt.Println("Fetching events from Meetup...")
-	fmt.Printf("City: %s, Date: %s, Distance: %d\n", c.City, c.Date, c.Distance)
+	fmt.Printf("City: %s, Date: %s, Distance: %d, API Key: %s\n", c.City, c.Date, c.Distance, c.MeetupAPIKey)
 	fmt.Println("Fetch operation completed.")
 	return nil
 }
