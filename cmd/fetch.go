@@ -22,7 +22,7 @@ var fetchCmd = &cobra.Command{
 	Long:  "Fetch events from the specified aggregator. The aggregator can be any event aggregator platform that is supported by this application.",
 	Args:  cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
-		aggregator := args[0]
+		aggregator := fetcher.EventAggregator(args[0])
 		fmt.Printf("Fetching events from aggregator %s in city %s\n", aggregator, fetchOptions.City)
 		apiKey := utils.GetEnv("EVENT_AGGREGATOR_API_KEY", "")
 		if apiKey == "" {
@@ -36,10 +36,12 @@ var fetchCmd = &cobra.Command{
 			return fmt.Errorf("unsupported aggregator: %s", aggregator)
 		}
 		// Fetch events using the fetcher
-		if err := eventFetcher.Fetch(); err != nil {
+		msg, err := eventFetcher.Fetch()
+		if err != nil {
 			fmt.Printf("Error fetching events: %v\n", err)
 			return err
 		}
+		fmt.Println(msg)
 		fmt.Println("Events fetched successfully.")
 		return nil
 	},

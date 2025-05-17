@@ -7,8 +7,8 @@ import (
 )
 
 type NotifyOptions struct {
-	ChatName string
-	Message  string
+	NotificationChannel string
+	Message             string
 }
 
 var notifyOptions NotifyOptions
@@ -21,7 +21,7 @@ var notifyCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		communicationApp := args[0]
 		fmt.Println("Notifying user using communication application:", communicationApp)
-		fmt.Println("Chat Name:", notifyOptions.ChatName)
+		fmt.Println("Chat Name:", notifyOptions.NotificationChannel)
 		fmt.Println("Message:", notifyOptions.Message)
 	},
 }
@@ -31,7 +31,7 @@ func init() {
 	rootCmd.AddCommand(notifyCmd)
 
 	// add any flags required for the notify command here
-	notifyCmd.Flags().StringVarP(&notifyOptions.ChatName, "chat-name", "c", "", "Name of the chat to notify")
+	notifyCmd.Flags().StringVarP(&notifyOptions.NotificationChannel, "chat-name", "c", "", "Name of the chat to notify")
 	notifyCmd.MarkFlagRequired("chat-name")
 	notifyCmd.Flags().StringVarP(&notifyOptions.Message, "message", "m", "", "Message to send in the notification")
 	notifyCmd.MarkFlagRequired("message")

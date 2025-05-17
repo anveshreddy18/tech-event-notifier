@@ -1,16 +1,22 @@
 package fetcher
 
-// So I want to write an interface for the fetcher now.
+// EventAggregator represents the type of event aggregator to use.
+type EventAggregator string
+
+const (
+	MeetupAggregator     EventAggregator = "meetup"
+	EventbriteAggregator EventAggregator = "eventbrite"
+)
 
 type fetcher interface {
-	Fetch() error
+	Fetch() (string, error)
 }
 
-func NewFetcher(aggregator string, city string, apiKey string) fetcher {
+func NewFetcher(aggregator EventAggregator, city string, apiKey string) fetcher {
 	switch aggregator {
-	case "meetup":
+	case MeetupAggregator:
 		return NewMeetup(city, apiKey)
-	case "eventbrite":
+	case EventbriteAggregator:
 		return NewEventbrite(city, apiKey)
 	default:
 		return nil

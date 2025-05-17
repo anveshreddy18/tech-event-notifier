@@ -21,9 +21,9 @@ func NewMeetup(city string, apiKey string) *MeetupConfig {
 	}
 }
 
-func (c *MeetupConfig) Fetch() error {
+func (c *MeetupConfig) Fetch() (string, error) {
 	fmt.Println("Fetching events from Meetup...")
 	fmt.Printf("City: %s, Date: %s, Distance: %d, API Key: %s\n", c.City, c.Date, c.Distance, c.MeetupAPIKey)
 	fmt.Println("Fetch operation completed.")
-	return nil
+	return "Fetch Data", nil
 }
